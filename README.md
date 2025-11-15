@@ -7,10 +7,10 @@
 
 > Global EV charging snapshot: **242,417 sites** across **121 countries**, with standardized columns for direct use.  
 >  
-> - Full global dataset (`charging_stations_2025_world.csv`)  
-> - ML-ready compact file (`charging_stations_2025_ml.csv`)  
-> - Country & world roll-ups (`country_summary_2025.csv`, `world_summary_2025.csv`)  
-> - EV models companion file (`ev_models_2025.csv`)  
+> - Full global dataset (`charging_stations_world.csv`)  
+> - ML-ready compact file (`charging_stations_ml.csv`)  
+> - Country & world roll-ups (`country_summary.csv`, `world_summary.csv`)  
+> - EV models companion file (`ev_models.csv`)  
 
 ---
 
@@ -22,7 +22,7 @@ This dataset consolidates everything into a **single, clean, analysis-ready bund
 
 ## 📦 What’s inside
 
-### Main file — `charging_stations_2025_world.csv`  
+### Main file — `charging_stations_world.csv`  
 One row per charging site (**11 columns**):  
 
 - `id` (int): OCM unique site ID  
@@ -36,15 +36,15 @@ One row per charging site (**11 columns**):
 - `power_class` (str): derived from `power_kw` thresholds  
 - `is_fast_dc` (bool): `true` if `power_kw ≥ 50`  
 
-### ML-ready file — `charging_stations_2025_ml.csv`  
+### ML-ready file — `charging_stations_ml.csv`  
 Simplified **7-column** version, deduplicated and compact for direct ML training.  
 
 ### Helper files
-- `country_summary_2025.csv` — per-country counts & max power  
-- `world_summary_2025.csv` — quick global roll-up  
+- `country_summary.csv` — per-country counts & max power  
+- `world_summary.csv` — quick global roll-up  
 
 ### Companion file
-- `ev_models_2025.csv` — EV models (make, model, market regions, powertrain, first year, body style, origin country)  
+- `ev_models.csv` — EV models (make, model, market regions, powertrain, first year, body style, origin country)  
 
 ---
 
@@ -80,7 +80,7 @@ Processed and released by Tarek Masryo (© 2025) under CC BY 4.0 International.
 - Map global coverage and fast-DC availability  
 - Train clustering or forecasting models using ML-ready file  
 - Build dashboards and visualizations (Streamlit, Plotly, Mapbox)  
-- Combine with `ev_models_2025.csv` to study **supply vs demand**  
+- Combine with `ev_models.csv` to study **supply vs demand**  
 
 ---
 
@@ -88,7 +88,7 @@ Processed and released by Tarek Masryo (© 2025) under CC BY 4.0 International.
 ```python
 import pandas as pd
 
-df = pd.read_csv("charging_stations_2025_world.csv")
+df = pd.read_csv("charging_stations_world.csv")
 print(df.shape)
 
 # Top 15 countries by number of sites
@@ -105,6 +105,7 @@ print("Fast-DC share:", round(fast_dc_share, 3))
 ## Related Repositories
 - 🔍 [EV Charging EDA](https://github.com/tarekmasryo/ev-charging-eda)
 - 📊 [EV Charging Dashboard](https://github.com/tarekmasryo/ev-charging-dashboard)
+
 
 
 
