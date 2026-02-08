@@ -1,0 +1,26 @@
+table,column,type,description
+charging_stations_world,id,int,Unique station ID (Open Charge Map)
+charging_stations_world,name,str,Station name
+charging_stations_world,city,str,City name (may be "UNKNOWN")
+charging_stations_world,country_code,str,ISO-2 country code (uppercase)
+charging_stations_world,state_province,str,State/Province (may be "UNKNOWN")
+charging_stations_world,latitude,float,WGS84 latitude
+charging_stations_world,longitude,float,WGS84 longitude
+charging_stations_world,ports,int,Number of charging points / connectors
+charging_stations_world,power_kw,float,Maximum charging power in kW
+charging_stations_world,power_class,str,Derived category (slow/fast/hpc)
+charging_stations_world,is_fast_dc,bool,True if power_kw >= 50
+country_summary,country_code,str,ISO-2 country code (uppercase)
+country_summary,stations,int,Number of charging stations in country
+world_summary,countries,int,Number of countries in snapshot
+world_summary,stations,int,Number of stations in snapshot
+world_summary,ports_sum,float,Total number of ports (sum)
+world_summary,power_kw_max,float,Max observed power_kw
+world_summary,fast_dc_share,float,Share of stations flagged fast DC
+ev_models,make,str,Manufacturer
+ev_models,model,str,Model name
+ev_models,market_regions,str,Regions where model is sold
+ev_models,powertrain,str,BEV/PHEV/etc
+ev_models,first_year,int,First model year
+ev_models,body_style,str,Sedan/SUV/etc
+ev_models,origin_country,str,Manufacturer country

@@ -1,0 +1,39 @@
+name: dataset-quality
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt -r requirements-dev.txt
+
+      - name: Ruff (lint + format check)
+        run: |
+          python -m ruff check scripts
+          python -m ruff format --check scripts
+
+      - name: Dataset validation
+        run: |
+          python scripts/validate_dataset.py --data-dir data
+
+      - name: Build derived views
+        run: |
+          python scripts/build_views.py --data-dir data --out-dir generated
+
+      - name: Write checksums
+        run: |
+          python scripts/write_checksums.py --root . --out checksums.sha256
