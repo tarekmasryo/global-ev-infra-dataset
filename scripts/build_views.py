@@ -12,8 +12,7 @@ def _pick_existing(data_dir: Path, candidates: list[str]) -> Path:
         if p.exists():
             return p
     raise FileNotFoundError(
-        "Could not find main stations file. Expected one of: "
-        + ", ".join(candidates)
+        "Could not find main stations file. Expected one of: " + ", ".join(candidates)
     )
 
 
@@ -84,9 +83,7 @@ def build_views(data_dir: Path, out_dir: Path) -> None:
 
 
 def parse_args() -> argparse.Namespace:
-    p = argparse.ArgumentParser(
-        description="Build derived views from Global EV Infra dataset."
-    )
+    p = argparse.ArgumentParser(description="Build derived views from Global EV Infra dataset.")
     p.add_argument(
         "--data-dir",
         type=Path,
